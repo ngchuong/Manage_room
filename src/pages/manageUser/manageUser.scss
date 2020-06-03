@@ -1,0 +1,29 @@
+.container-manage-user {
+    .title-table {
+
+    }
+
+    .content-table {
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+    
+            tr {
+                th {
+                    border: solid 1px #bbb;
+                    text-align: center;
+                    padding: 8px;
+                    text-transform: capitalize;
+                }
+                td {
+                    border: solid 1px #bbb;
+                    text-align: center;
+                    padding: 8px;
+                }
+            }
+            tr:nth-child(even) {
+                background-color: #ddd;
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.container-table {
+
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+
+        tr {
+            overflow-x: auto;
+            th {
+                border: solid 1px #ddd;
+                text-align: center;
+                padding: 8px;
+                text-transform: capitalize;
+            }
+            td {
+                border: solid 1px #ddd;
+                text-align: center;
+                padding: 8px;
+            }
+        }
+
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+    }
+}

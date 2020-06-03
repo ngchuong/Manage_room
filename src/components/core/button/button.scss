@@ -1,0 +1,41 @@
+.container-button {
+    .button {
+        border-radius: 6px;
+        padding: 10px 12px;
+        border: solid 1px #ccc;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+
+        
+    }
+
+    .btn-submit {
+        @extend .button;
+        background-color: #348feb;
+        color: #fff;
+
+        &:hover {
+            background-color: #125acc;
+            box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+        }
+    }
+
+    .btn-cancel {
+        @extend .button;
+        border: solid 1px #348feb;
+        background-color: #fff;
+        color: #348feb;
+
+        &:hover {
+            background-color: #eee;
+            box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+        }
+    }
+
+    .btn-login {
+        @extend .btn-submit ;
+        width: 100%;
+    }
+}
