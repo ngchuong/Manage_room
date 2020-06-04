@@ -17,21 +17,29 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
         {
             name: "chuog",
             age: 18,
-            sex: "nam"
+            sex: "nam",
+            images: "123",
+            type_room: "1"
         },
         {
             name: "lorem",
             age: 11,
-            sex: "nu"
+            sex: "nu",
+            images: "11",
+            type_room: "2"
         },
     ]
 
+    const onOpenModalAdd = () => {
+        setTypeModal("add");
+        setDataModal({});
+        setIsOpenModal(true);
+    }
 
     const onOpenModalEdit = (data) => {
         setTypeModal("edit");
         setDataModal(data);
         setIsOpenModal(true);
-
     }
 
     const onOpenModalDel = (data) => {
@@ -44,22 +52,27 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
         setIsOpenModal(false)
     }
 
-    const onEdit = () => {
-        updateUser();
+    const onAdd = (oldUser, newUser) => {
+        addUser(newUser);
+    }
+    const onEdit = (oldUser, newUser) => {
+        updateUser(oldUser, newUser);
+        setIsOpenModal(false);
     }
 
     const onDel = () => {
-        deleteUser();
+        deleteUser(dataModal);
     }
     return (
         <div className="container-manage-user">
             <div className="title-table">Quản lý User</div>
-            <div className= "add-row">
-                <Button 
-                title={"Add new User"}
-                 cls={"btn-submit"} 
-                     icon={<i class="fa fa-plus-circle"></i>}
-                 />
+            <div className="add-row">
+                <Button
+                    handleClick={onOpenModalAdd}
+                    title={"Add new User"}
+                    cls={"btn-submit"}
+                    icon={<i class="fa fa-plus-circle"></i>}
+                />
             </div>
             <div className="content-table">
                 <Table
@@ -73,6 +86,7 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
                 onCloseModal={onCloseModal}
                 dataForm={dataModal}
                 data={testArrUser}
+                onAdd={onAdd}
                 onEdit={onEdit}
                 onDel={onDel}
                 typeHandle={typeModal}

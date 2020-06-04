@@ -7,7 +7,7 @@ import { Modal } from 'react-responsive-modal';
 import Button from '../../core/button/button';
 import Input from '../../core/input/input';
 
-const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCreate, typeHandle }) => {
+const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAdd, typeHandle }) => {
     const [formData, setFormData] = useState();
 
     useEffect(() => {
@@ -58,8 +58,6 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
         )
     }
 
-
-
     const onSubmit = (e) => {
         e.preventDefault();
         let newData = { ...formData };
@@ -73,7 +71,7 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
         } else if (typeHandle === "edit") {
             onEdit && onEdit(data, newData);
         } else {
-            onCreate && onCreate(data, newData);
+            onAdd && onAdd(data, newData);
         }
     }
 
