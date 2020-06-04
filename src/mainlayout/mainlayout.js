@@ -3,7 +3,7 @@ import './mainlayout.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import ModalRender from '../components/pages/Modal/Modal';
-
+import Button from '../components/core/button/button';
 import DialogRender from '../containers/Dialog';
 import manageUser from '../containers/manageUser.js';
 import manageRoom from '../containers/manageRooms.js';
@@ -12,7 +12,15 @@ function Mainlayout() {
     return (
         <div className="container-mainlayout">
             <div className="header-mainlayout">
-                Xin chao, admin
+                <div className="header-logo">Logo</div>
+                <div className="header-info">
+                    <span>
+                        <i class="fa fa-user"> User</i>
+                    </span>
+                    <span>
+                        <Button title={"Log-out"} cls={"btn-submit"} />
+                    </span>
+                </div>
             </div>
             <div className="body-mainlayout">
                 <Router>

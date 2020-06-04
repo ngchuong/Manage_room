@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './modal.scss';
+import './Modal.scss';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -7,7 +7,7 @@ import { Modal } from 'react-responsive-modal';
 import Button from '../../core/button/button';
 import Input from '../../core/input/input';
 
-const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCreate, type }) => {
+const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCreate, typeHandle }) => {
     const [formData, setFormData] = useState();
 
     useEffect(() => {
@@ -36,6 +36,17 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
         if (formData) {
             value = formData[item] || '';
         }
+        if (item === "images") {
+            return (
+                <input type="file" multiple />
+            )
+        } else if (item === "type_room") {
+            return (
+                <select>
+                    <option></option>
+                </select>
+            )
+        }
         return (
             <Input
                 placeholder={item}
@@ -56,9 +67,9 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
             return
         }
 
-        if (type === "delete") {
+        if (typeHandle === "delete") {
             onDel(data);
-        } else if (type === "edit") {
+        } else if (typeHandle === "edit") {
             onEdit && onEdit(data, newData);
         } else {
             onCreate && onCreate(data, newData);
@@ -68,7 +79,7 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
     let titleForm = 'Title Form';
     let bodyModalForm = '';
 
-    if (type === "edit") {
+    if (typeHandle === "edit") {
         titleForm = "FORM EDIT";
         bodyModalForm = listField.map((item, index) => (
             <div key={index}>
@@ -80,10 +91,10 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
                 </div>
             </div>
         ));
-    } else if (type === "delete") {
+    } else if (typeHandle === "delete") {
         titleForm = "FORM DELETE";
-        bodyModalForm = <div className="delete-item">Do you want to delete this user ?</div>;
-    } else if (type === "add") {
+        bodyModalForm = <div className="delete-item">Do you want to delete ?</div>;
+    } else if (typeHandle === "add") {
         titleForm = "FORM ADD";
         bodyModalForm = listField.map((item, index) => (
             <div key={index}>

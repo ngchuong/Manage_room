@@ -54,6 +54,9 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
     return (
         <div className="container-manage-user">
             <div className="title-table">Quản lý User</div>
+            <div className= "add-row">
+                <Button title={"Add new User"} cls={"btn-submit"} />
+            </div>
             <div className="content-table">
                 <Table
                     dataSource={testArrUser}
@@ -68,7 +71,7 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
                 data={testArrUser}
                 onEdit={onEdit}
                 onDel={onDel}
-                type={typeModal}
+                typeHandle={typeModal}
             />
         </div>
     );
