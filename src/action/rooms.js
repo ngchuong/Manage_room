@@ -19,7 +19,7 @@ export const getRooms = {
         type: GET_ROOM_START,
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: GET_ROOM_SUCCEED,
         payload: result,
     }),
@@ -36,7 +36,7 @@ export const addRoom = {
         payload: room
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: ADD_ROOM_SUCCEED,
         payload: result,
     }),
@@ -53,7 +53,7 @@ export const updateRoom = {
         payload: { oldRoom, newRoom }
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: UPDATE_ROOM_SUCCEED,
         payload: result,
     }),
@@ -70,7 +70,7 @@ export const delRoom = {
         payload: id
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: DEL_ROOM_SUCCEED,
         payload: result,
     }),

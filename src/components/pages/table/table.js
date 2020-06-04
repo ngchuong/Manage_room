@@ -32,8 +32,18 @@ const Table = ({ dataSource, onOpenModalEdit, onOpenModalDel }) => {
         return items.map((item, index) => (
             <tr key={index}>
                 <RenderRow key={index} keys={keys} data={item} />
-                <td><Button handleClick={() => onOpenModalEdit(item)} title={'Edit'} cls={'btn-submit'} /></td>
-                <td><Button handleClick={() => onOpenModalDel(item)} title={'Delete'} cls={'btn-submit'} /></td>
+                <td><Button
+                    handleClick={() => onOpenModalEdit(item)}
+                    title={'Edit'}
+                    cls={'btn-submit'}
+                    icon={<i class="fa fa-edit"></i>}
+                /></td>
+                <td><Button
+                    handleClick={() => onOpenModalDel(item)}
+                    title={'Delete'}
+                    cls={'btn-danger'}
+                    icon={<i class="fa fa-trash"></i>}
+                /></td>
             </tr>
         ))
     }

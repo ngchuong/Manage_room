@@ -15,10 +15,14 @@ function Mainlayout() {
                 <div className="header-logo">Logo</div>
                 <div className="header-info">
                     <span>
-                        <i class="fa fa-user"> User</i>
+                        <i class="fa fa-user"> User </i>
                     </span>
                     <span>
-                        <Button title={"Log-out"} cls={"btn-submit"} />
+                        <Button
+                            icon={<i class="fa fa-sign-out"></i>}
+                            title={"Log-out"}
+                            cls={"btn-cancel"}
+                        />
                     </span>
                 </div>
             </div>

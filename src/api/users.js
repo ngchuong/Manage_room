@@ -13,14 +13,50 @@ export const getUsersFactory = () => {
 };
 
 export const createUserFactory = () => {
-	return 1;
+	const createUser = async (user) => {
+		const reqBody = {
+			user
+		}
+	
+		const response = await axios.post('api', reqBody, {
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+		});
+		if (response.status !== 200) {
+			throw new Error("Create user failed");
+		}
+		const result = response.data;
+		return result;
+	}
+	return createUser;
 }
 
 
 export const updateUserFactory = () => {
-	return 1;
+	const updateUser = async (oldUser, newUser) => {
+		const reqBody = newUser;
+		const response = await axios.patch('api', reqBody,
+			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+		);
+
+		if (response.status !== 200) {
+			throw new Error("Create user failed");
+		}
+		const result = newUser;
+		return result;
+	}
+	return updateUser;
 }
 
 export const delUserFactory = () => {
-	return 1;
+	const delUser = async (id) => {
+		const response = await axios.delete(`api`,
+			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, data: { id } }
+		);
+
+		if (response.status !== 204) {
+			throw new Error('Delete user failed');
+		}
+		return id;
+	}
+	return delUser;
 }

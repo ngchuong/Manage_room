@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 	rooms: state.rooms,
 })
 
-const mapDispatchtoProps = {
+const mapDispatchToProps = {
     getRooms: getRooms.start,
     addRoom: addRoom.start,
     updateRoom: updateRoom.start,
@@ -20,7 +20,7 @@ const mapDispatchtoProps = {
 
 const manageRoom = connect (
     mapStateToProps,
-    mapDispatchtoProps
+    mapDispatchToProps
 )(ManageRoom);
 
 export default manageRoom;

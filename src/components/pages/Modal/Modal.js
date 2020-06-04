@@ -53,6 +53,7 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
                 value={value}
                 onChange={handleInputChange}
                 item={item}
+                cls={"input"}
             />
         )
     }
@@ -122,7 +123,7 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onCr
                     <Button
                         handleClick={onSubmit}
                         title={'Submit'}
-                        cls={'btn-submit'} />
+                        cls={'btn-submit'} /> 
                     <Button
                         handleClick={onCloseModal}
                         title={'Cancel'}

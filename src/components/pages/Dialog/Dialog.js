@@ -17,13 +17,16 @@ const Dialog = ({ message }) => {
 		setIsOpen(false);
 	}
 	return (
-		<div>
-			<Modal open={isOpen} center>
+		<div className="dialog-container">
+			<Modal open={isOpen} onClose={closeDialog} center>
 				<div className="content-dialog">
 					{message}
 				</div>
 				<div className="footer-dialog">
-					<Button handleClick={closeDialog} cls={'button-submit'} title="OK" />
+					<Button
+						handleClick={closeDialog}
+						cls={'btn-submit'}
+						title="OK" />
 				</div>
 			</Modal>
 		</div>

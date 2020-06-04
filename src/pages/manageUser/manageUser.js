@@ -55,7 +55,11 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
         <div className="container-manage-user">
             <div className="title-table">Quản lý User</div>
             <div className= "add-row">
-                <Button title={"Add new User"} cls={"btn-submit"} />
+                <Button 
+                title={"Add new User"}
+                 cls={"btn-submit"} 
+                     icon={<i class="fa fa-plus-circle"></i>}
+                 />
             </div>
             <div className="content-table">
                 <Table

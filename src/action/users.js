@@ -19,7 +19,7 @@ export const getUsers = {
         type: GET_USER_START,
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: GET_USER_SUCCEED,
         payload: result,
     }),
@@ -31,11 +31,11 @@ export const getUsers = {
 }
 
 export const createUser = {
-    start: () => ({
+    start: (user) => ({
         type: ADD_USER_START,
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: ADD_USER_SUCCEED,
         payload: result,
     }),
@@ -47,11 +47,15 @@ export const createUser = {
 }
 
 export const updateUser = {
-    start: () => ({
+    start: (oldUser, newUser) => ({
         type: UPDATE_USER_START,
+        payload: {
+            oldUser,
+            newUser
+        }
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: UPDATE_USER_SUCCEED,
         payload: result,
     }),
@@ -67,7 +71,7 @@ export const delUser = {
         type: DEL_USER_START,
     }),
 
-    succed: (result) => ({
+    succeed: (result) => ({
         type: DEL_USER_SUCCEED,
         payload: result,
     }),

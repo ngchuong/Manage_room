@@ -21,7 +21,7 @@ function* requestRoomSaga() {
         
         const api = getRoomsFactory();
         const response = yield call(api);
-        yield put(getRooms.succed(response));
+        yield put(getRooms.succeed(response));
 
     } catch (err) {
         yield put(getRooms.failed(err))

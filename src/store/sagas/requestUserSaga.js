@@ -21,7 +21,7 @@ function* requestUsersSaga() {
     try {
         const api = getUsersFactory();
         const response = yield call(api);
-        yield put(getUsers.succed(response));
+        yield put(getUsers.succeed(response));
     } catch (err) {
         yield put(getUsers.failed(err));
     }
