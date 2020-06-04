@@ -69,9 +69,9 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
             <div className="add-row">
                 <Button
                     handleClick={onOpenModalAdd}
-                    title={"Add new User"}
+                    title={"Add User"}
                     cls={"btn-submit"}
-                    icon={<i class="fa fa-plus-circle"></i>}
+                    icon={<i className="fa fa-plus-circle"></i>}
                 />
             </div>
             <div className="content-table">

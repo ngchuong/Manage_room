@@ -15,11 +15,11 @@ function Mainlayout() {
                 <div className="header-logo">Logo</div>
                 <div className="header-info">
                     <span>
-                        <i class="fa fa-user"> User </i>
+                        <i className="fa fa-user"> User </i>
                     </span>
                     <span>
                         <Button
-                            icon={<i class="fa fa-sign-out"></i>}
+                            icon={<i className="fa fa-sign-out"></i>}
                             title={"Log-out"}
                             cls={"btn-cancel"}
                         />
@@ -29,13 +29,13 @@ function Mainlayout() {
             <div className="body-mainlayout">
                 <Router>
                     <div className="sidebar-menu">
-                        <div><NavLink className="nav-link" to="/"><i className="fa fa-user"> Quản lý User</i></NavLink></div>
+                        <div><NavLink className="nav-link" to="/user"><i className="fa fa-user"> Quản lý User</i></NavLink></div>
                         <div><NavLink className="nav-link" to="/room"><i className="fa fa-home"> Quản lý Room</i></NavLink></div>
                         {/* <div><NavLink className="nav-link" to="/about">Quản lý Comment</NavLink></div> */}
                     </div>
                     <div className="content">
                         <Switch>
-                            <Route path="/" exact component={manageUser} />
+                            <Route path="/user" exact component={manageUser} />
                             <Route path="/room" exact component={manageRoom} />
                             {/* <Route path="/about" component={Login} /> */}
                         </Switch>

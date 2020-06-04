@@ -55,13 +55,18 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
 
     const onAdd = (oldRoom, newRoom) => {
         addRoom(newRoom);
+        setIsOpenModal(false);
+
     }
-    const onEdit = () => {
-        updateRoom();
+    const onEdit = (oldRoom, newRoom) => {
+        updateRoom(oldRoom, newRoom);
+        setIsOpenModal(false);
+
     }
 
     const onDel = () => {
-        delRoom();
+        delRoom(dataModal);
+        setIsOpenModal(false);
     }
 
     return (
@@ -69,10 +74,10 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
             <div className="title-table">Quản lý Room</div>
             <div className="add-row">
                 <Button
-                    handleClick={onAdd}
-                    title={"Add new Room"}
+                    handleClick={onOpenModalAdd}
+                    title={"Add Room"}
                     cls={"btn-submit"}
-                    icon={<i class="fa fa-plus-circle"></i>}
+                    icon={<i className="fa fa-plus-circle"></i>}
                 />
             </div>
             <div className="content-table">

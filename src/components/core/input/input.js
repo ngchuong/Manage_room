@@ -7,7 +7,7 @@ const Input = ({ placeholder, item, onChange,type, value, cls, ...props }) => {
     }
     return (
         <div className="container-input">
-            <input className={cls} {...props} onChange={handleChange} type={type} value={value} />
+            <input className={cls} {...props} placeholder={placeholder} onChange={handleChange} type={type} value={value} />
         </div>
     )
 }
