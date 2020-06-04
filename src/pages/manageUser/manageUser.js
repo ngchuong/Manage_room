@@ -4,28 +4,72 @@ import Table from '../../components/pages/table/table.js';
 import Button from '../../components/core/button/button.js';
 import ModalRender from '../../components/pages/Modal/Modal';
 
-function ManageUser({ getUsers, users }) {
+function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [dataModal, setDataModal] = useState({});
+    const [typeModal, setTypeModal] = useState();
+
     useEffect(() => {
         getUsers();
     }, [getUsers])
 
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const testArrUser = [
+        {
+            name: "chuog",
+            age: 18,
+            sex: "nam"
+        },
+        {
+            name: "lorem",
+            age: 11,
+            sex: "nu"
+        },
+    ]
 
-    const onEdit = (e) => {
+
+    const onOpenModalEdit = (data) => {
+        setTypeModal("edit");
+        setDataModal(data);
+        setIsOpenModal(true);
+
+    }
+
+    const onOpenModalDel = (data) => {
+        setTypeModal("delete");
+        setDataModal(data);
         setIsOpenModal(true);
     }
 
-    const onDel = (e) => {
-
+    const onCloseModal = () => {
+        setIsOpenModal(false)
     }
 
+    const onEdit = () => {
+        updateUser();
+    }
+
+    const onDel = () => {
+        deleteUser();
+    }
     return (
         <div className="container-manage-user">
             <div className="title-table">Quản lý User</div>
             <div className="content-table">
-                <Table dataSource={users} onEdit={onEdit} onDel={onDel} />
+                <Table
+                    dataSource={testArrUser}
+                    onOpenModalEdit={onOpenModalEdit}
+                    onOpenModalDel={onOpenModalDel}
+                />
             </div>
-            <ModalRender isOpen={isOpenModal} />
+            <ModalRender
+                isOpen={isOpenModal}
+                onCloseModal={onCloseModal}
+                dataForm={dataModal}
+                data={testArrUser}
+                onEdit={onEdit}
+                onDel={onDel}
+                type={typeModal}
+            />
         </div>
     );
 }

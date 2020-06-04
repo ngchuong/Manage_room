@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import ManageUser from '../pages/manageUser/manageUser.js';
-import { getUsers } from '../action/users.js'
+import { 
+	getUsers,
+	createUser,
+	updateUser,
+	delUser,
+ } from '../action/users.js'
 
 
 const mapStateToProps = (state) => ({
@@ -9,9 +14,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	getUsers: getUsers.start,
-	// createUser: createUser.start,
-	// editUser: editUser.start,
-	// deleteUser: delUser.start,
+	addUser: createUser.start,
+	updateUser: updateUser.start,
+	deleteUser: delUser.start,
 }
 
 const manageUser = connect(

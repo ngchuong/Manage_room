@@ -3,12 +3,12 @@ import './manageRoom.scss';
 import Table from '../../components/pages/table/table.js';
 import Button from '../../components/core/button/button.js';
 
-function ManageRoom({ getRooms, rooms }) {
-    console.log(rooms)
+function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
+    
     useEffect(() => {
         getRooms();
     }, [getRooms])
-  
+
 
     return (
         <div className="container-manage-room">

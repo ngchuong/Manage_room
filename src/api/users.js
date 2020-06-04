@@ -11,3 +11,16 @@ export const getUsersFactory = () => {
 	}
 	return getUserList;
 };
+
+export const createUserFactory = () => {
+	return 1;
+}
+
+
+export const updateUserFactory = () => {
+	return 1;
+}
+
+export const delUserFactory = () => {
+	return 1;
+}

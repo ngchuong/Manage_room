@@ -4,6 +4,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import ModalRender from '../components/pages/Modal/Modal';
 
+import DialogRender from '../containers/Dialog';
 import manageUser from '../containers/manageUser.js';
 import manageRoom from '../containers/manageRooms.js';
 
@@ -30,6 +31,7 @@ function Mainlayout() {
                 </Router>
             </div>
             <ModalRender />
+            <DialogRender />
         </div>
     )
 }

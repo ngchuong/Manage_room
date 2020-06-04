@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './table.scss';
 import Button from '../../core/button/button';
 
-const Table = ({ dataSource, onEdit, onDel }) => {
+const Table = ({ dataSource, onOpenModalEdit, onOpenModalDel }) => {
 
     //render table s
     const getKeys = () => {
@@ -21,6 +21,7 @@ const Table = ({ dataSource, onEdit, onDel }) => {
     }
 
     const RenderRow = (props) => {
+        // console.log(props)
         return props.keys.map((key, index) => (
             <td key={index}>{props.data[key]}</td>
         ))
@@ -31,8 +32,8 @@ const Table = ({ dataSource, onEdit, onDel }) => {
         return items.map((item, index) => (
             <tr key={index}>
                 <RenderRow key={index} keys={keys} data={item} />
-                <td><Button onClick={onEdit} title={'Edit'} cls={'btn-submit'} /></td>
-                <td><Button onClick={onDel} title={'Delete'} cls={'btn-submit'} /></td>
+                <td><Button handleClick={() => onOpenModalEdit(item)} title={'Edit'} cls={'btn-submit'} /></td>
+                <td><Button handleClick={() => onOpenModalDel(item)} title={'Delete'} cls={'btn-submit'} /></td>
             </tr>
         ))
     }
