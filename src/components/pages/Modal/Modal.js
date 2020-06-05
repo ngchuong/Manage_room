@@ -3,24 +3,12 @@ import './Modal.scss';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import Select from 'react-select';
 
 import Button from '../../core/button/button';
 import Input from '../../core/input/input';
 
 const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAdd, typeHandle }) => {
     const [formData, setFormData] = useState();
-
-    const arrTypeRoom = [
-        {
-            value: 1,
-            label: 'Cho thuê',
-        },
-        {
-            value: 2,
-            label: 'Để bán'
-        }
-    ]
 
     useEffect(() => {
         if (dataForm == null) {

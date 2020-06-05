@@ -54,11 +54,12 @@ function* updateRoomSaga(action) {
 }
 
 function* delRoomSaga(action) {
-	const id = action.payload.id;
+	const room = action.payload;
 	try {
 		const api = delRoomFactory();
 
-		const response = yield call(api, id)
+		const response = yield call(api, room);
+		console.log(response)
 		yield put(delRoom.succeed(response));
 	} catch (error) {
 		yield put(delRoom.failed(error));

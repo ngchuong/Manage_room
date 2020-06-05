@@ -65,9 +65,9 @@ export const updateRoom = {
 }
 
 export const delRoom = {
-    start: (id) => ({
+    start: (room) => ({
         type: DEL_ROOM_START,
-        payload: id
+        payload: room
     }),
 
     succeed: (result) => ({

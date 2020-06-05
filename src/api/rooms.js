@@ -7,11 +7,10 @@ export const getRoomsFactory = () => {
 			throw new Error('Get data failed !');
 		}
 		const data = response.data;
-
-		let result = '';
+		let newData = '';
 		for (let i = 0; i < data.length; i++) {
-			result = [
-				...result,
+			newData = [
+				...newData,
 				{
 					id: data[i].id,
 					title: data[i].title,
@@ -23,11 +22,12 @@ export const getRoomsFactory = () => {
 					price: data[i].price,
 					path: data[i].path,
 					typeRoom: data[i].type_room,
-					// isActive: data[i].isActive,
+					isActive: data[i].isActive,
 					created: data[i].created,
 				}
 			]
 		}
+		const result = newData.filter(item => item.isActive === "1");
 		return result;
 	}
 
@@ -36,7 +36,6 @@ export const getRoomsFactory = () => {
 
 export const addRoomFactory = () => {
 	const addRoom = async (room) => {
-		// console.log(room.listImage)
 		const reqBody = {
 			title: room.title,
 			arr_image: JSON.stringify(room.listImage),
@@ -64,10 +63,9 @@ export const addRoomFactory = () => {
 
 export const updateRoomFactory = () => {
 	const updateRoom = async (oldRoom, newRoom) => {
-		const reqBody = {
-			newRoom
-		};
-		const response = await axios.patch('api', reqBody,
+		console.log(newRoom);
+		const reqBody = newRoom;
+		const response = await axios.patch('http://localhost:80/API_PHP/room/updateRoom.php', reqBody,
 			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
 		);
 
@@ -80,15 +78,18 @@ export const updateRoomFactory = () => {
 	return updateRoom;
 }
 export const delRoomFactory = () => {
-	const delUser = async (id) => {
-		const response = await axios.delete(`api`,
-			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, data: { id } }
+	const delUser = async (room) => {
+		const reqBody = { id: room.id };
+
+		const response = await axios.patch(`http://localhost:80/API_PHP/room/deleteRoom.php`, reqBody,
+			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
 		);
 
-		if (response.status !== 204) {
+		if (response.status !== 200) {
 			throw new Error('Delete user failed');
 		}
-		return id;
+
+		return reqBody.id;
 	}
 	return delUser;
 }
