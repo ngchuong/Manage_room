@@ -33,6 +33,7 @@ export const getUsers = {
 export const createUser = {
     start: (user) => ({
         type: ADD_USER_START,
+        payload:user
     }),
 
     succeed: (result) => ({
@@ -67,8 +68,9 @@ export const updateUser = {
 }
 
 export const delUser = {
-    start: () => ({
+    start: (user) => ({
         type: DEL_USER_START,
+        payload: user
     }),
 
     succeed: (result) => ({

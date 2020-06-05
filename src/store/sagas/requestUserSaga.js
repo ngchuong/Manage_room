@@ -53,11 +53,11 @@ function* updateUserSaga(action) {
 }
 
 function* delUserSaga(action) {
-	const id = action.payload.id;
+	const user = action.payload;
 	try {
 		const api = delUserFactory();
 
-		const response = yield call(api, id)
+        const response = yield call(api, user);
 		yield put(delUser.succeed(response));
 	} catch (error) {
 		yield put(delUser.failed(error));

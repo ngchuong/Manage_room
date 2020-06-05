@@ -4,6 +4,16 @@
         padding: 8px 20px;
         border-radius: 6px;
         border: solid 1px #ccc;
+        width: 80% !important;
+    }
+
+    input[type=text] {
+        width: 80% !important;
+    }
+    
+    input[type=password] {
+        padding: 8px !important;
+        
     }
 
     .input-login {

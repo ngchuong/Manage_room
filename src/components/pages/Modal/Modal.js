@@ -54,6 +54,7 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAd
                 onChange={handleInputChange}
                 item={item}
                 cls={"input"}
+                type={(item === "password") ? "password" : "text"}
             />
         )
     }
@@ -118,14 +119,18 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAd
                     </div>
                 </div>
                 <div className="modal-foot">
-                    <Button
-                        handleClick={onSubmit}
-                        title={'Submit'}
-                        cls={'btn-submit'} /> 
-                    <Button
-                        handleClick={onCloseModal}
-                        title={'Cancel'}
-                        cls={'btn-cancel'} />
+                    <span>
+                        <Button
+                            handleClick={onSubmit}
+                            title={'Submit'}
+                            cls={'btn-submit'} />
+                    </span>
+                    <span>
+                        <Button
+                            handleClick={onCloseModal}
+                            title={'Cancel'}
+                            cls={'btn-cancel'} />
+                    </span>
                 </div>
             </Modal>
         </div>

@@ -9,26 +9,22 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
     const [dataModal, setDataModal] = useState({});
     const [typeModal, setTypeModal] = useState();
 
+    let dataToModal = '';
+    for (let i = 0; i < users.length; i++) {
+        dataToModal = [
+            ...dataToModal,
+            {
+                name: users[i].name,
+                phone_number: users[i].phone_number,
+                password: users[i].password,
+                email: users[i].email
+            }
+        ]
+    }
+
     useEffect(() => {
         getUsers();
     }, [getUsers])
-
-    const testArrUser = [
-        {
-            name: "chuog",
-            age: 18,
-            sex: "nam",
-            images: "123",
-            type_room: "1"
-        },
-        {
-            name: "lorem",
-            age: 11,
-            sex: "nu",
-            images: "11",
-            type_room: "2"
-        },
-    ]
 
     const onOpenModalAdd = () => {
         setTypeModal("add");
@@ -76,7 +72,7 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
             </div>
             <div className="content-table">
                 <Table
-                    dataSource={testArrUser}
+                    dataSource={users}
                     onOpenModalEdit={onOpenModalEdit}
                     onOpenModalDel={onOpenModalDel}
                 />
@@ -85,7 +81,7 @@ function ManageUser({ getUsers, users, addUser, updateUser, deleteUser }) {
                 isOpen={isOpenModal}
                 onCloseModal={onCloseModal}
                 dataForm={dataModal}
-                data={testArrUser}
+                data={dataToModal}
                 onAdd={onAdd}
                 onEdit={onEdit}
                 onDel={onDel}

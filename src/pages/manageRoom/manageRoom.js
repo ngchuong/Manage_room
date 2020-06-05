@@ -13,23 +13,6 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
         getRooms();
     }, [getRooms])
 
-    const testArrUser = [
-        {
-            name: "chuog",
-            age: 18,
-            sex: "nam",
-            images: "123",
-            type_room: "1"
-        },
-        {
-            name: "lorem",
-            age: 11,
-            sex: "nu",
-            images: "11",
-            type_room: "2"
-        },
-    ]
-
     const onOpenModalAdd = () => {
         setTypeModal("add");
         setDataModal({});
@@ -40,7 +23,6 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
         setTypeModal("edit");
         setDataModal(data);
         setIsOpenModal(true);
-
     }
 
     const onOpenModalDel = (data) => {
@@ -61,7 +43,6 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
     const onEdit = (oldRoom, newRoom) => {
         updateRoom(oldRoom, newRoom);
         setIsOpenModal(false);
-
     }
 
     const onDel = () => {
@@ -91,7 +72,7 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
                 isOpen={isOpenModal}
                 onCloseModal={onCloseModal}
                 dataForm={dataModal}
-                data={testArrUser}
+                data={rooms}
                 onAdd={onAdd}
                 onEdit={onEdit}
                 onDel={onDel}

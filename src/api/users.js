@@ -6,7 +6,10 @@ export const getUsersFactory = () => {
 		if (response.status !== 200) {
 			throw new Error('Get data failed !');
 		}
-		const result = response.data;
+		const data = response.data;
+		const result = data.filter(item => item.isActive === "1");
+		// console.log(result)
+
 		return result;
 	}
 	return getUserList;
@@ -15,10 +18,13 @@ export const getUsersFactory = () => {
 export const createUserFactory = () => {
 	const createUser = async (user) => {
 		const reqBody = {
-			user
+			name: user.name,
+			phone_number: user.phone_number,
+			password: user.password,
+			email: user.email
 		}
-	
-		const response = await axios.post('api', reqBody, {
+
+		const response = await axios.post('http://localhost:80/API_PHP/users/postUsers.php', reqBody, {
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
 		if (response.status !== 200) {
@@ -30,33 +36,40 @@ export const createUserFactory = () => {
 	return createUser;
 }
 
-
 export const updateUserFactory = () => {
 	const updateUser = async (oldUser, newUser) => {
-		const reqBody = newUser;
-		const response = await axios.patch('api', reqBody,
+		const reqBody = {
+			name: newUser.name,
+			phone_number: newUser.phone_number,
+			password: newUser.password,
+			email: newUser.email,
+			id: newUser.id
+		}
+		const response = await axios.patch('http://localhost:80/API_PHP/users/putUsers.php', reqBody,
 			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
 		);
 
 		if (response.status !== 200) {
 			throw new Error("Create user failed");
 		}
-		const result = newUser;
+		console.log(reqBody);
+		const result = reqBody;
 		return result;
 	}
 	return updateUser;
 }
 
 export const delUserFactory = () => {
-	const delUser = async (id) => {
-		const response = await axios.delete(`api`,
-			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, data: { id } }
+	const delUser = async (user) => {
+		const reqBody = { id: user.id };
+		const response = await axios.patch(`http://localhost:80/API_PHP/users/delUsers.php`, reqBody,
+			{ headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
 		);
-
-		if (response.status !== 204) {
+		if (response.status !== 200) {
 			throw new Error('Delete user failed');
 		}
-		return id;
+		const result = reqBody.id;
+		return result;
 	}
 	return delUser;
 }

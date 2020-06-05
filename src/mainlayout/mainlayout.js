@@ -8,14 +8,18 @@ import DialogRender from '../containers/Dialog';
 import manageUser from '../containers/manageUser.js';
 import manageRoom from '../containers/manageRooms.js';
 
+import logo from '../asset/image/logo2.png';
+
 function Mainlayout() {
     return (
         <div className="container-mainlayout">
             <div className="header-mainlayout">
-                <div className="header-logo">Logo</div>
+                <div className="header-logo">
+                    <img src={logo} alt="no-logo" />
+                </div>
                 <div className="header-info">
-                    <span>
-                        <i className="fa fa-user"> User </i>
+                    <span className="user">
+                        <i className="fa fa-user"> Xin chào, Admin </i>
                     </span>
                     <span>
                         <Button

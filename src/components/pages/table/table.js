@@ -21,7 +21,6 @@ const Table = ({ dataSource, onOpenModalEdit, onOpenModalDel }) => {
     }
 
     const RenderRow = (props) => {
-        // console.log(props)
         return props.keys.map((key, index) => (
             <td key={index}>{props.data[key]}</td>
         ))
