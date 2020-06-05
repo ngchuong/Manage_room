@@ -9,6 +9,26 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
     const [dataModal, setDataModal] = useState({});
     const [typeModal, setTypeModal] = useState();
 
+    let dataToModal = '';
+
+    for (let i = 0; i < rooms.length; i++) {
+        dataToModal = [
+            ...dataToModal,
+            {
+                title: rooms[i].title,
+                address: rooms[i].address,
+                acreage: rooms[i].acreage,
+                bathroom: rooms[i].bathroom,
+                bed: rooms[i].bed,
+                phone_number: rooms[i].phoneNumber,
+                price: rooms[i].price,
+                images: rooms[i].path,
+                type_room: rooms[i].type_room,
+                // phone_number: rooms[i].phone_number,
+            }
+        ]
+    }
+
     useEffect(() => {
         getRooms();
     }, [getRooms])
@@ -72,7 +92,7 @@ function ManageRoom({ getRooms, rooms, addRoom, updateRoom, delRoom }) {
                 isOpen={isOpenModal}
                 onCloseModal={onCloseModal}
                 dataForm={dataModal}
-                data={rooms}
+                data={dataToModal}
                 onAdd={onAdd}
                 onEdit={onEdit}
                 onDel={onDel}

@@ -1,13 +1,13 @@
 .container-table {
-
     .table {
         border-collapse: collapse;
         width: 100%;
+        
 
         tr {
             overflow-x: auto;
             th {
-                border: solid 1px #ddd;
+                border: solid 1px #bbb;
                 text-align: center;
                 padding: 6px;
                 height: 30px;
@@ -16,9 +16,10 @@
                 color: #fff;
             }
             td {
-                border: solid 1px #ddd;
+                border: solid 1px #bbb;
                 text-align: center;
                 padding: 6px;
+                white-space: nowrap;
             }
         }
 

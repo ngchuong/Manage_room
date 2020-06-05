@@ -31,13 +31,13 @@ const Table = ({ dataSource, onOpenModalEdit, onOpenModalDel }) => {
         return items.map((item, index) => (
             <tr key={index}>
                 <RenderRow key={index} keys={keys} data={item} />
-                <td><Button
+                <td ><Button
                     handleClick={() => onOpenModalEdit(item)}
                     title={'Edit'}
                     cls={'btn-submit'}
                     icon={<i className="fa fa-edit"></i>}
                 /></td>
-                <td><Button
+                <td ><Button
                     handleClick={() => onOpenModalDel(item)}
                     title={'Delete'}
                     cls={'btn-danger'}
@@ -59,7 +59,7 @@ const Table = ({ dataSource, onOpenModalEdit, onOpenModalDel }) => {
                         <th>DELETE</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {getRowsData()}
                 </tbody>
             </table>

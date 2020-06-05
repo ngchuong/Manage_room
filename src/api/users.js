@@ -8,7 +8,6 @@ export const getUsersFactory = () => {
 		}
 		const data = response.data;
 		const result = data.filter(item => item.isActive === "1");
-		// console.log(result)
 
 		return result;
 	}
@@ -52,7 +51,6 @@ export const updateUserFactory = () => {
 		if (response.status !== 200) {
 			throw new Error("Create user failed");
 		}
-		console.log(reqBody);
 		const result = reqBody;
 		return result;
 	}

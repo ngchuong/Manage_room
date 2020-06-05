@@ -3,12 +3,24 @@ import './Modal.scss';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import Select from 'react-select';
 
 import Button from '../../core/button/button';
 import Input from '../../core/input/input';
 
 const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAdd, typeHandle }) => {
     const [formData, setFormData] = useState();
+
+    const arrTypeRoom = [
+        {
+            value: 1,
+            label: 'Cho thuê',
+        },
+        {
+            value: 2,
+            label: 'Để bán'
+        }
+    ]
 
     useEffect(() => {
         if (dataForm == null) {
@@ -31,6 +43,19 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAd
         setFormData({ ...formData, [item]: valueInput });
     }
 
+    const handleSelectChange = (e) => {
+        setFormData({ ...formData, type_room: e.target.value });
+    }
+
+    const handleFileChange = (e) => {
+        let listImage = [];
+        const images = e.target.files;
+        for (let i = 0; i < images.length; i++) {
+            listImage = [...listImage, images[i].name];
+        }
+        setFormData({ ...formData, listImage })
+
+    }
     const components = (item) => {
         let value = '';
         if (formData) {
@@ -38,12 +63,17 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAd
         }
         if (item === "images") {
             return (
-                <input type="file" multiple />
+                <form encType="multipart/form-data">
+                    <input type="file" multiple onChange={handleFileChange} />
+                </form>
             )
         } else if (item === "type_room") {
+            value = "1";
             return (
-                <select>
-                    <option></option>
+                <select defaultValue={value} onChange={handleSelectChange}>
+                    {/* <option disabled>--Chọn kiểu phòng--</option> */}
+                    <option value="1">Cho thuê</option>
+                    <option value="2">Để bán</option>
                 </select>
             )
         }
@@ -61,12 +91,12 @@ const ModalRender = ({ isOpen, onCloseModal, dataForm, data, onEdit, onDel, onAd
 
     const onSubmit = (e) => {
         e.preventDefault();
+
         let newData = { ...formData };
         let newArr = Object.values(newData);
         if (newArr.length < listField.length) {
             return
         }
-
         if (typeHandle === "delete") {
             onDel(data);
         } else if (typeHandle === "edit") {
